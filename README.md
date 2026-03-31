@@ -1,82 +1,135 @@
-# Chennai Traffic Congestion Analysis
+# 🚦 Chennai Traffic Congestion Analysis  
 ## Comparative Study of M/M/1 and M/D/1 Queuing Models
 
-**Author:** SUGANESH SP  
-**Degree:** BSc Statistics, 2023–26  
-**Tools:** Python, scipy, statsmodels, matplotlib, pandas
+**Author:** Suganesh SP  
+**Degree:** B.Sc. Statistics (2023–2026)  
+**Tools:** Python, pandas, numpy, scipy, statsmodels, matplotlib, seaborn  
 
 ---
 
-## Project Overview
+## 📌 Project Overview
 
-This study applies M/M/1 and M/D/1 queuing models to analyse 
-traffic congestion at four major signalised intersections in 
-Chennai — Kathipara, Koyambedu, Porur, and T. Nagar.
+This project applies queuing theory to analyse traffic congestion at major signalised intersections in Chennai, including Kathipara, Koyambedu, Porur, and T. Nagar.
 
-The dataset contains 17,472 hourly records spanning 
-January to June 2024, derived from the TomTom Traffic 
-Index (2025) and supplementary published sources.
+The study compares **M/M/1** and **M/D/1** queue models to evaluate system performance under different traffic conditions and quantify congestion levels.
 
 ---
 
-## Key Findings
+## 🎯 Objectives
 
-- Vehicle arrivals follow a **Negative Binomial distribution** 
-  (99.8% subgroup pass rate) — Poisson rejected due to 
-  structural over-dispersion
-- **M/D/1 produces queue lengths exactly half those of M/M/1** 
-  for fixed-cycle signals (paired t-test: t = 27.39, p < 0.001)
-- **Kathipara Junction Evening Peak** operates at ρ = 1.052 — 
-  chronically oversaturated with 59.6% breakdown rate
-- All four time periods are statistically distinct 
-  (ANOVA: F = 26,531, p < 0.001)
-- Evening Peak breakdown probability = 0.459 
-  (95% Wilson CI: 0.441, 0.477)
+- Model urban traffic flow using queuing theory  
+- Compare stochastic vs deterministic service systems  
+- Evaluate congestion using statistical analysis  
+- Derive insights for traffic system efficiency  
 
 ---
 
-## Statistical Tests Conducted
+## 📊 Dataset
+
+- **Total Records:** 17,472 hourly observations  
+- **Time Period:** January – June 2024  
+
+The dataset is **simulated using real-world traffic parameters** derived from sources such as the TomTom Traffic Index and related traffic studies.
+
+---
+
+## ⚙️ Methodology
+
+### Distribution Analysis
+- Index of Dispersion  
+- Chi-Square Goodness-of-Fit  
+- Kolmogorov–Smirnov Test  
+
+**Result:** Vehicle arrivals follow a **Negative Binomial distribution**, indicating over-dispersion.
+
+---
+
+### Queuing Models
+
+#### 🔹 M/M/1
+- Poisson arrivals  
+- Exponential service times  
+
+#### 🔹 M/D/1
+- Poisson arrivals  
+- Deterministic service times  
+
+---
+
+### Key Parameters
+
+- Arrival Rate (λ)  
+- Service Rate (μ)  
+- Traffic Intensity (ρ = λ / μ)  
+
+---
+
+## 📈 Statistical Tests
 
 | Test | Purpose | Result |
-|---|---|---|
-| Index of Dispersion | Poisson diagnostic | ID = 23–107, over-dispersed |
-| Chi-Square GoF | Poisson formal test | Rejected, p = 0.000 |
-| KS Test | Multi-distribution fit | NegBin wins at 99.8% |
-| Paired t-test | MM1 vs MD1 difference | t = 27.39, p < 0.001 |
-| One-Way ANOVA | Period distinctness | F = 26,531, p < 0.001 |
-| Tukey HSD | Pairwise comparisons | All 6 pairs significant |
-| Wilson CI | Breakdown probability | EP: 0.459 (0.441, 0.477) |
+|------|--------|--------|
+| Index of Dispersion | Poisson diagnostic | Over-dispersed |
+| Chi-Square GoF | Distribution fit | Rejected |
+| KS Test | Distribution comparison | Negative Binomial selected |
+| Paired t-test | MM1 vs MD1 | Significant difference |
+| One-Way ANOVA | Period comparison | Significant |
+| Tukey HSD | Pairwise analysis | All significant |
+| Wilson CI | Breakdown probability | Estimated |
 
 ---
 
-## Results Summary
+## 📊 Results Summary
 
 | Period | λ (veh/hr) | μ (veh/hr) | ρ | MM1 Lq | MD1 Lq |
-|---|---|---|---|---|---|
-| Night | 98.9 | 2,340 | 0.042 | 0.002 | 0.001 |
-| Midday | 758.3 | 1,872 | 0.405 | 0.328 | 0.164 |
-| Morning Peak | 1,322 | 1,620 | 0.816 | 8.357 | 4.178 |
-| Evening Peak | 1,450 | 1,512 | 0.959 | 9.709 | 4.855 |
+|--------|-----------|-----------|----|--------|--------|
+| Night | 98.9 | 2340 | 0.042 | 0.002 | 0.001 |
+| Midday | 758.3 | 1872 | 0.405 | 0.328 | 0.164 |
+| Morning Peak | 1322 | 1620 | 0.816 | 8.357 | 4.178 |
+| Evening Peak | 1450 | 1512 | 0.959 | 9.709 | 4.855 |
 
 ---
 
-## Project Structure
+## 🔥 Key Findings
 
-| File | Description |
-|---|---|
-| `traffic_congestion_chennai.ipynb` | Main analysis notebook |
-| `Chennai_Raw_Data.csv` | Dataset (17,472 records) |
+- Vehicle arrivals exhibit **over-dispersion** and deviate from Poisson assumptions  
+- **M/D/1 queues reduce queue length by ~50%** compared to M/M/1  
+- System performance deteriorates significantly as **ρ approaches 1**  
+- Evening peak period shows highest congestion and breakdown probability  
 
 ---
 
-## Technologies Used
+## 🧠 Insight
 
-- **Python 3** — core analysis
-- **pandas** — data manipulation
-- **scipy** — statistical tests and distribution fitting
-- **statsmodels** — ANOVA, Tukey HSD, Wilson CI
-- **matplotlib / seaborn** — visualisations
-- **numpy** — numerical computation
+> Reducing service-time variability (as in M/D/1 systems) significantly improves traffic flow efficiency in signalised intersections.
+
+---
+
+## 📁 Project Structure
+
+```
+📦 Chennai-Traffic-Queuing-Analysis
+ ┣ 📜 traffic_congestion_eda_final.ipynb
+ ┣ 📜 Chennai_Raw_Data.csv
+ ┗ 📜 README.md
 ```
 
 ---
+
+## 💻 Technologies Used
+
+- Python 3  
+- pandas  
+- numpy  
+- scipy  
+- statsmodels  
+- matplotlib / seaborn  
+
+---
+
+## 📌 Conclusion
+
+This study demonstrates how queuing theory and statistical methods can be applied to model and analyse urban traffic congestion, providing meaningful insights into system performance and efficiency.
+
+---
+
+## ⭐ Star this repository if you found it useful!
