@@ -108,7 +108,7 @@ The dataset is **simulated using real-world traffic parameters** derived from so
 
 ```
 📦 Chennai-Traffic-Queuing-Analysis
- ┣ 📜 traffic_congestion_eda_final.ipynb
+ ┣ 📜 traffic_congestion_chennai.ipynb
  ┣ 📜 Chennai_Raw_Data.csv
  ┗ 📜 README.md
 ```
